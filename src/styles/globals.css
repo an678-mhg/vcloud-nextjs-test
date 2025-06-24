@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #1EE1E1;
+  --secondary-color: #4EEC8C;
+  --dark-blue: #001a66;
+  --text-color: #333;
+  --text-light: #666;
+  --white: #fff;
+  --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+@layer components {
+  .cta-button {
+    @apply bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-medium 
+    transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 inline-flex items-center gap-2;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-center mb-8 text-dark-blue;
+  }
+
+  .section-description {
+    @apply text-lg text-center text-gray-600 max-w-3xl mx-auto mb-12;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+} 
