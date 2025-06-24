@@ -1,13 +1,8 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { useInView } from 'react-intersection-observer'
-import {
-  ServerStackIcon,
-  CircleStackIcon,
-  Cog6ToothIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline'
+import React, { useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { CheckCircleIcon } from "@heroicons/react/outline";
 
 // Styles for modal and other components
 const styles = {
@@ -18,129 +13,144 @@ const styles = {
   aiButton: `mt-6 px-4 py-2 bg-blue-500 text-white rounded-md font-medium text-center cursor-pointer hover:bg-blue-600 transition-colors duration-200`,
   modalOverlay: `fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300`,
   modalContent: `bg-white p-8 rounded-lg shadow-xl w-[90%] max-w-lg max-h-[90vh] overflow-y-auto`,
-}
+};
 
 const features = [
   {
-    title: 'Infrastructure as a Service',
-    description: 'Cung cấp tài nguyên hạ tầng điện toán đám mây cốt lõi bao gồm máy chủ ảo, lưu trữ và mạng. Toàn quyền kiểm soát và tùy chỉnh linh hoạt.',
-    icon: ServerStackIcon,
-    color: 'bg-blue-100 text-blue-600',
+    title: "Infrastructure as a Service",
+    description:
+      "Cung cấp tài nguyên hạ tầng điện toán đám mây cốt lõi bao gồm máy chủ ảo, lưu trữ và mạng. Toàn quyền kiểm soát và tùy chỉnh linh hoạt.",
+    icon: CheckCircleIcon,
+    color: "bg-blue-100 text-blue-600",
     highlight: true,
     features: [
       {
-        title: 'Máy chủ ảo (VMs)',
-        description: 'Hiệu suất cao, tùy chọn cấu hình đa dạng, sẵn sàng đáp ứng mọi nhu cầu.'
+        title: "Máy chủ ảo (VMs)",
+        description:
+          "Hiệu suất cao, tùy chọn cấu hình đa dạng, sẵn sàng đáp ứng mọi nhu cầu.",
       },
       {
-        title: 'Lưu trữ linh hoạt',
-        description: 'Các giải pháp Block Storage, Object Storage an toàn, bền bỉ và dễ dàng mở rộng.'
+        title: "Lưu trữ linh hoạt",
+        description:
+          "Các giải pháp Block Storage, Object Storage an toàn, bền bỉ và dễ dàng mở rộng.",
       },
       {
-        title: 'Mạng ảo hóa (VPC)',
-        description: 'Tạo lập môi trường mạng riêng biệt, an toàn với khả năng tùy chỉnh định tuyến và bảo mật.'
+        title: "Mạng ảo hóa (VPC)",
+        description:
+          "Tạo lập môi trường mạng riêng biệt, an toàn với khả năng tùy chỉnh định tuyến và bảo mật.",
       },
       {
-        title: 'Khả năng mở rộng tự động',
-        description: 'Tự động điều chỉnh tài nguyên theo nhu cầu thực tế, tối ưu chi phí và hiệu suất.'
-      }
-    ]
+        title: "Khả năng mở rộng tự động",
+        description:
+          "Tự động điều chỉnh tài nguyên theo nhu cầu thực tế, tối ưu chi phí và hiệu suất.",
+      },
+    ],
   },
   {
-    title: 'Platform as a Service',
-    description: 'Nền tảng hoàn chỉnh để phát triển, triển khai và quản lý ứng dụng mà không cần lo lắng về hạ tầng bên dưới.',
-    icon: CircleStackIcon,
-    color: 'bg-green-100 text-green-600',
+    title: "Platform as a Service",
+    description:
+      "Nền tảng hoàn chỉnh để phát triển, triển khai và quản lý ứng dụng mà không cần lo lắng về hạ tầng bên dưới.",
+    icon: CheckCircleIcon,
+    color: "bg-green-100 text-green-600",
     highlight: false,
     features: [
       {
-        title: 'Môi trường Runtime',
-        description: 'Hỗ trợ đa dạng ngôn ngữ lập trình và framework, giúp triển khai nhanh chóng.'
+        title: "Môi trường Runtime",
+        description:
+          "Hỗ trợ đa dạng ngôn ngữ lập trình và framework, giúp triển khai nhanh chóng.",
       },
       {
-        title: 'Cơ sở dữ liệu quản lý',
-        description: 'Các dịch vụ database (SQL, NoSQL) được tối ưu, tự động sao lưu và bảo trì.'
+        title: "Cơ sở dữ liệu quản lý",
+        description:
+          "Các dịch vụ database (SQL, NoSQL) được tối ưu, tự động sao lưu và bảo trì.",
       },
       {
-        title: 'Nền tảng Container',
-        description: 'Dễ dàng triển khai và quản lý ứng dụng với Kubernetes hoặc dịch vụ container khác.'
+        title: "Nền tảng Container",
+        description:
+          "Dễ dàng triển khai và quản lý ứng dụng với Kubernetes hoặc dịch vụ container khác.",
       },
       {
-        title: 'Công cụ DevOps & CI/CD',
-        description: 'Tích hợp sẵn các công cụ giúp tự động hóa quy trình phát triển và triển khai.'
-      }
-    ]
+        title: "Công cụ DevOps & CI/CD",
+        description:
+          "Tích hợp sẵn các công cụ giúp tự động hóa quy trình phát triển và triển khai.",
+      },
+    ],
   },
   {
-    title: 'Management',
-    description: 'Bộ công cụ toàn diện giúp bạn quản lý, giám sát và tối ưu hóa tài nguyên đám mây một cách hiệu quả và an toàn.',
-    icon: Cog6ToothIcon,
-    color: 'bg-purple-100 text-purple-600',
+    title: "Management",
+    description:
+      "Bộ công cụ toàn diện giúp bạn quản lý, giám sát và tối ưu hóa tài nguyên đám mây một cách hiệu quả và an toàn.",
+    icon: CheckCircleIcon,
+    color: "bg-purple-100 text-purple-600",
     highlight: false,
     features: [
       {
-        title: 'Cổng quản lý tập trung',
-        description: 'Giao diện trực quan để quản lý tất cả dịch vụ và tài nguyên của bạn.'
+        title: "Cổng quản lý tập trung",
+        description:
+          "Giao diện trực quan để quản lý tất cả dịch vụ và tài nguyên của bạn.",
       },
       {
-        title: 'Giám sát & Cảnh báo',
-        description: 'Theo dõi hiệu suất, phát hiện sự cố sớm và nhận thông báo tức thời.'
+        title: "Giám sát & Cảnh báo",
+        description:
+          "Theo dõi hiệu suất, phát hiện sự cố sớm và nhận thông báo tức thời.",
       },
       {
-        title: 'Quản lý định danh & Truy cập (IAM)',
-        description: 'Kiểm soát quyền truy cập vào tài nguyên một cách an toàn và chi tiết.'
+        title: "Quản lý định danh & Truy cập (IAM)",
+        description:
+          "Kiểm soát quyền truy cập vào tài nguyên một cách an toàn và chi tiết.",
       },
       {
-        title: 'Thanh toán & Tối ưu chi phí',
-        description: 'Công cụ theo dõi, phân tích và quản lý chi tiêu đám mây hiệu quả.'
-      }
-    ]
-  }
-]
+        title: "Thanh toán & Tối ưu chi phí",
+        description:
+          "Công cụ theo dõi, phân tích và quản lý chi tiêu đám mây hiệu quả.",
+      },
+    ],
+  },
+];
 
 export default function Features() {
   const { ref, inView } = useInView({
     threshold: 0.1,
-    triggerOnce: true
-  })
+    triggerOnce: true,
+  });
 
   const [modalState, setModalState] = useState({
     isOpen: false,
-    service: '',
+    service: "",
     loading: false,
-    response: ''
-  })
+    response: "",
+  });
 
   const handleAIButtonClick = (service: string) => {
     setModalState({
       isOpen: true,
       service,
       loading: false,
-      response: ''
-    })
-  }
+      response: "",
+    });
+  };
 
   const handleModalClose = () => {
-    setModalState(prev => ({ ...prev, isOpen: false }))
-  }
+    setModalState((prev) => ({ ...prev, isOpen: false }));
+  };
 
   const handleSubmitToGemini = async (problem: string) => {
-    setModalState(prev => ({ ...prev, loading: true }))
+    setModalState((prev) => ({ ...prev, loading: true }));
     try {
       // Implement Gemini API call here
-      setModalState(prev => ({
+      setModalState((prev) => ({
         ...prev,
         loading: false,
-        response: 'API implementation pending...'
-      }))
+        response: "API implementation pending...",
+      }));
     } catch (error) {
-      setModalState(prev => ({
+      setModalState((prev) => ({
         ...prev,
         loading: false,
-        response: 'Đã xảy ra lỗi. Vui lòng thử lại sau.'
-      }))
+        response: "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+      }));
     }
-  }
+  };
 
   return (
     <section className="py-12 md:py-20 bg-gray-50">
@@ -150,29 +160,32 @@ export default function Features() {
             Tính năng nổi bật
           </h2>
           <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-xl mx-auto">
-            Khám phá tính năng mạnh mẽ của VCLOUD giúp doanh nghiệp của bạn vận hành hiệu quả hơn
+            Khám phá tính năng mạnh mẽ của VCLOUD giúp doanh nghiệp của bạn vận
+            hành hiệu quả hơn
           </p>
         </div>
 
-        <div 
+        <div
           ref={ref}
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch transition-all duration-1000 transform ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           {features.map((feature) => (
             <div
               key={feature.title}
-              className={`${styles.featureColumn} ${feature.highlight ? styles.highlightColumn : ''}`}
+              className={`${styles.featureColumn} ${
+                feature.highlight ? styles.highlightColumn : ""
+              }`}
             >
               <div className={`${styles.iconPlaceholder} ${feature.color}`}>
                 <feature.icon className="w-6 h-6" />
               </div>
-              
+
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {feature.title}
               </h3>
-              
+
               <p className="text-sm text-gray-600 mb-4">
                 {feature.description}
               </p>
@@ -184,7 +197,7 @@ export default function Features() {
                       <CheckCircleIcon className="h-5 w-5 text-blue-500" />
                     </div>
                     <div>
-                      <strong className="text-gray-900">{item.title}:</strong>{' '}
+                      <strong className="text-gray-900">{item.title}:</strong>{" "}
                       <span className="text-gray-600">{item.description}</span>
                     </div>
                   </li>
@@ -205,11 +218,14 @@ export default function Features() {
       {/* AI Advisor Modal */}
       {modalState.isOpen && (
         <div className={styles.modalOverlay} onClick={handleModalClose}>
-          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
             <h4 className="text-xl font-semibold text-gray-800 mb-4">
               ✨ Cố vấn Giải pháp AI cho {modalState.service}
             </h4>
-            
+
             <textarea
               className="w-full min-h-[100px] p-3 border border-gray-300 rounded-md mb-4 text-sm"
               placeholder="Mô tả vấn đề hoặc nhu cầu kinh doanh của bạn ở đây..."
@@ -217,9 +233,25 @@ export default function Features() {
 
             {modalState.loading && (
               <div className="text-center text-gray-600">
-                <svg className="animate-spin h-5 w-5 text-blue-500 inline mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                <svg
+                  className="animate-spin h-5 w-5 text-blue-500 inline mr-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
                 </svg>
                 Đang xử lý yêu cầu...
               </div>
@@ -240,7 +272,7 @@ export default function Features() {
               </button>
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                onClick={() => handleSubmitToGemini('Sample problem')}
+                onClick={() => handleSubmitToGemini("Sample problem")}
               >
                 Gửi yêu cầu
               </button>
@@ -249,5 +281,5 @@ export default function Features() {
         </div>
       )}
     </section>
-  )
+  );
 }

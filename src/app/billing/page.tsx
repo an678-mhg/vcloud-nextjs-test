@@ -1,63 +1,61 @@
-import React from 'react'
+import React from "react";
 import {
   CreditCardIcon,
   DownloadIcon,
   PlusIcon,
-  CashIcon,
-  ChartBarIcon,
   ServerIcon,
   DatabaseIcon,
   CloudIcon,
   CubeTransparentIcon,
-} from '@heroicons/react/outline'
+} from "@heroicons/react/outline";
 
 const invoices = [
   {
-    id: '1',
-    amount: 2450.00,
-    status: 'paid',
-    period: 'January 2024',
-    dueDate: '2024-02-01',
+    id: "1",
+    amount: 2450.0,
+    status: "paid",
+    period: "January 2024",
+    dueDate: "2024-02-01",
   },
   {
-    id: '2',
-    amount: 2150.00,
-    status: 'pending',
-    period: 'December 2023',
-    dueDate: '2024-01-01',
+    id: "2",
+    amount: 2150.0,
+    status: "pending",
+    period: "December 2023",
+    dueDate: "2024-01-01",
   },
   {
-    id: '3',
-    amount: 1950.00,
-    status: 'paid',
-    period: 'November 2023',
-    dueDate: '2023-12-01',
+    id: "3",
+    amount: 1950.0,
+    status: "paid",
+    period: "November 2023",
+    dueDate: "2023-12-01",
   },
-]
+];
 
 const paymentMethods = [
   {
-    id: '1',
-    type: 'visa',
-    last4: '4242',
-    expiry: '12/24',
+    id: "1",
+    type: "visa",
+    last4: "4242",
+    expiry: "12/24",
     isDefault: true,
   },
   {
-    id: '2',
-    type: 'mastercard',
-    last4: '5555',
-    expiry: '10/25',
+    id: "2",
+    type: "mastercard",
+    last4: "5555",
+    expiry: "10/25",
     isDefault: false,
   },
-]
+];
 
 const usageStats = [
-  { name: 'Compute', amount: 1250.00, icon: ServerIcon },
-  { name: 'Storage', amount: 450.00, icon: DatabaseIcon },
-  { name: 'Network', amount: 350.00, icon: CloudIcon },
-  { name: 'Kubernetes', amount: 400.00, icon: CubeTransparentIcon },
-]
+  { name: "Compute", amount: 1250.0, icon: ServerIcon },
+  { name: "Storage", amount: 450.0, icon: DatabaseIcon },
+  { name: "Network", amount: 350.0, icon: CloudIcon },
+  { name: "Kubernetes", amount: 400.0, icon: CubeTransparentIcon },
+];
 
 export default function BillingPage() {
   return (
@@ -102,7 +100,9 @@ export default function BillingPage() {
         {/* Payment Methods */}
         <div className="mt-8">
           <div className="flex justify-between items-center">
-            <h2 className="text-lg font-medium text-gray-900">Payment Methods</h2>
+            <h2 className="text-lg font-medium text-gray-900">
+              Payment Methods
+            </h2>
             <button
               type="button"
               className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
@@ -207,9 +207,9 @@ export default function BillingPage() {
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             <span
                               className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${
-                                invoice.status === 'paid'
-                                  ? 'bg-green-100 text-green-800'
-                                  : 'bg-yellow-100 text-yellow-800'
+                                invoice.status === "paid"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-yellow-100 text-yellow-800"
                               }`}
                             >
                               {invoice.status}
@@ -240,5 +240,5 @@ export default function BillingPage() {
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}
