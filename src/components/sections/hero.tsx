@@ -29,8 +29,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Nền tảng điện toán đám mây
-                <span className="text-primary block mt-2">tiên tiến nhất Việt Nam</span>
+                Nền tảng điện toán                 <span className="text-primary block mt-2">tiên tiến nhất Việt Nam</span>
               </motion.h1>
               <motion.div 
                 className="flex items-center justify-center md:justify-start mt-4 space-x-4"
