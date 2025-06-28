@@ -43,35 +43,24 @@ export function Navbar() {
               />
             </Link>
           </div>
-          
+
           <div className="flex items-center gap-6">
-            <span className="text-sm text-gray-600">Sales: +84 (028) 7306 8789</span>
-            <div className="relative group">
-              <button className="text-sm text-gray-600 hover:text-primary flex items-center gap-1">
-                Support
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute right-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-2">
-                <Link
-                  href="#support"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Hỗ trợ kỹ thuật
-                </Link>
-                <Link
-                  href="#faq"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  FAQ
-                </Link>
-              </div>
-            </div>
             <div className="flex items-center gap-2">
               <span>🌐</span>
               <button className="text-sm text-gray-600">VI | EN</button>
             </div>
+            <Link 
+              href="/contact"
+              className="text-sm text-gray-600 hover:text-primary"
+            >
+              Liên hệ ngay
+            </Link>
+            <Link 
+              href="/auth/login"
+              className="text-sm font-medium text-white bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Đăng nhập
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -97,227 +86,202 @@ export function Navbar() {
 
         {/* Main Navigation */}
         <nav className="hidden md:block px-4 py-4">
-          <ul className="flex items-center gap-8">
-            {/* About Us */}
-            <li className="relative group">
-              <button 
-                className={classNames(
-                  'text-gray-700 hover:text-primary transition-colors flex items-center gap-1',
-                  isActiveParent(['/about']) ? 'text-primary font-medium' : ''
-                )}
-              >
-                Về chúng tôi
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-2">
-                <Link
-                  href="/about"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+          <div className="flex items-center justify-between">
+            <ul className="flex items-center gap-8">
+              {/* About Us */}
+              <li className="relative group">
+                <button 
+                  className={classNames(
+                    'text-gray-700 hover:text-primary transition-colors flex items-center gap-1',
+                    isActiveParent(['/about']) ? 'text-primary font-medium' : ''
+                  )}
                 >
-                  Giới thiệu chung
-                </Link>
-                <Link
-                  href="/about/development"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Định hướng phát triển
-                </Link>
-                <Link
-                  href="/privacy"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Chính sách bảo mật
-                </Link>
-                <Link
-                  href="/privacy/data"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Chính sách bảo mật dữ liệu cá nhân
-                </Link>
-                <Link
-                  href="/sla"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Chính sách SLA
-                </Link>
-              </div>
-            </li>
+                  Về chúng tôi
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-2">
+                  <Link
+                    href="/about"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Giới thiệu chung
+                  </Link>
+                  <Link
+                    href="/about/development"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Định hướng phát triển
+                  </Link>
+                  <Link
+                    href="/privacy"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Chính sách bảo mật
+                  </Link>
+                  <Link
+                    href="/privacy/data"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Chính sách bảo mật dữ liệu cá nhân
+                  </Link>
+                  <Link
+                    href="/sla"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Chính sách SLA
+                  </Link>
+                </div>
+              </li>
 
-            {/* Features */}
-            <li className="relative group">
-              <button 
-                className={classNames(
-                  'text-gray-700 hover:text-primary transition-colors flex items-center gap-1',
-                  isActiveParent(['/compute', '/networking', '/storage', '/kubernetes', '/database', '/monitoring', '/security']) ? 'text-primary font-medium' : ''
-                )}
-              >
-                Tính năng
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg">
-                <div className="grid grid-cols-3 gap-6 p-6">
-                  {/* Infrastructure */}
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-4">Hạ tầng</h3>
-                    <ul className="space-y-4">
-                      <li>
-                        <Link href="/compute" className="flex items-start gap-3">
-                          <span className="text-2xl">💻</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Compute</h4>
-                            <p className="text-sm text-gray-600">Cung cấp máy chủ ảo (VMs) để chạy các ứng dụng</p>
-                          </div>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/networking" className="flex items-start gap-3">
-                          <span className="text-2xl">🌐</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Networking</h4>
-                            <p className="text-sm text-gray-600">Quản lý kết nối mạng và bảo mật</p>
-                          </div>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/storage" className="flex items-start gap-3">
-                          <span className="text-2xl">💾</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Storage</h4>
-                            <p className="text-sm text-gray-600">Giải pháp lưu trữ đám mây</p>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+              {/* Features */}
+              <li className="relative group">
+                <button 
+                  className={classNames(
+                    'text-gray-700 hover:text-primary transition-colors flex items-center gap-1',
+                    isActiveParent(['/compute', '/networking', '/storage', '/kubernetes', '/database', '/monitoring', '/security']) ? 'text-primary font-medium' : ''
+                  )}
+                >
+                  Tính năng
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute left-0 mt-2 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg">
+                  <div className="grid grid-cols-3 gap-6 p-6">
+                    {/* Infrastructure */}
+                    <div>
+                      <h3 className="font-medium text-gray-900 mb-4">Hạ tầng</h3>
+                      <ul className="space-y-4">
+                        <li>
+                          <Link href="/compute" className="flex items-start gap-3">
+                            <span className="text-2xl">💻</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Compute</h4>
+                              <p className="text-sm text-gray-600">Cung cấp máy chủ ảo (VMs) để chạy các ứng dụng</p>
+                            </div>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/networking" className="flex items-start gap-3">
+                            <span className="text-2xl">🌐</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Networking</h4>
+                              <p className="text-sm text-gray-600">Quản lý kết nối mạng và bảo mật</p>
+                            </div>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/storage" className="flex items-start gap-3">
+                            <span className="text-2xl">💾</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Storage</h4>
+                              <p className="text-sm text-gray-600">Giải pháp lưu trữ đám mây</p>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
 
-                  {/* Applications & Data */}
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-4">Ứng dụng & Dữ liệu</h3>
-                    <ul className="space-y-4">
-                      <li>
-                        <Link href="/kubernetes" className="flex items-start gap-3">
-                          <span className="text-2xl">🚀</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Kubernetes</h4>
-                            <p className="text-sm text-gray-600">Nền tảng container tự động hóa</p>
-                          </div>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/database" className="flex items-start gap-3">
-                          <span className="text-2xl">🗄️</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Database</h4>
-                            <p className="text-sm text-gray-600">Dịch vụ cơ sở dữ liệu được quản lý</p>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                    {/* Applications & Data */}
+                    <div>
+                      <h3 className="font-medium text-gray-900 mb-4">Ứng dụng & Dữ liệu</h3>
+                      <ul className="space-y-4">
+                        <li>
+                          <Link href="/kubernetes" className="flex items-start gap-3">
+                            <span className="text-2xl">🚀</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Kubernetes</h4>
+                              <p className="text-sm text-gray-600">Nền tảng container tự động hóa</p>
+                            </div>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/database" className="flex items-start gap-3">
+                            <span className="text-2xl">🗄️</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Database</h4>
+                              <p className="text-sm text-gray-600">Dịch vụ cơ sở dữ liệu được quản lý</p>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
 
-                  {/* Operations & Security */}
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-4">Vận hành & Bảo mật</h3>
-                    <ul className="space-y-4">
-                      <li>
-                        <Link href="/monitoring" className="flex items-start gap-3">
-                          <span className="text-2xl">📊</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Monitoring</h4>
-                            <p className="text-sm text-gray-600">Giám sát và cảnh báo</p>
-                          </div>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/security" className="flex items-start gap-3">
-                          <span className="text-2xl">🔒</span>
-                          <div>
-                            <h4 className="font-medium text-gray-700">Security</h4>
-                            <p className="text-sm text-gray-600">Bảo mật và quản lý truy cập</p>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
+                    {/* Operations & Security */}
+                    <div>
+                      <h3 className="font-medium text-gray-900 mb-4">Vận hành & Bảo mật</h3>
+                      <ul className="space-y-4">
+                        <li>
+                          <Link href="/monitoring" className="flex items-start gap-3">
+                            <span className="text-2xl">📊</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Monitoring</h4>
+                              <p className="text-sm text-gray-600">Giám sát và cảnh báo</p>
+                            </div>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/security" className="flex items-start gap-3">
+                            <span className="text-2xl">🔒</span>
+                            <div>
+                              <h4 className="font-medium text-gray-700">Security</h4>
+                              <p className="text-sm text-gray-600">Bảo mật và quản lý truy cập</p>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
+              </li>
+
+              {/* Blog */}
+              <li>
+                <Link
+                  href="/blog"
+                  className={classNames(
+                    'text-gray-700 hover:text-primary transition-colors',
+                    isActive('/blog') ? 'text-primary font-medium' : ''
+                  )}
+                >
+                  Blog
+                </Link>
+              </li>
+            </ul>
+
+            {/* Right side menu */}
+            <div className="flex items-center gap-6">
+              <span className="text-sm text-gray-600">Sales: +84 (028) 7306 8789</span>
+              <div className="relative group">
+                <button className="text-sm text-gray-600 hover:text-primary flex items-center gap-1">
+                  Support
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute right-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-2">
+                  <Link
+                    href="#support"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    Hỗ trợ kỹ thuật
+                  </Link>
+                  <Link
+                    href="#faq"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    FAQ
+                  </Link>
+                </div>
               </div>
-            </li>
-
-            {/* Blog */}
-            <li className="relative group">
-              <button 
-                className={classNames(
-                  'text-gray-700 hover:text-primary transition-colors flex items-center gap-1',
-                  isActiveParent(['/blog']) ? 'text-primary font-medium' : ''
-                )}
-              >
-                Blog
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-2">
-                <Link
-                  href="/blog/tech-news"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Tin tức công nghệ
-                </Link>
-                <Link
-                  href="/blog/tech"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Tech Blog
-                </Link>
-                <Link
-                  href="/blog/events"
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
-                >
-                  Sự kiện & Hoạt động
-                </Link>
-              </div>
-            </li>
-
-            <li>
-              <Link 
-                href="/pricing"
-                className={classNames(
-                  'text-gray-700 hover:text-primary transition-colors',
-                  isActive('/pricing') ? 'text-primary font-medium' : ''
-                )}
-              >
-                Bảng giá
-              </Link>
-            </li>
-          </ul>
-
-          <div className="hidden md:flex items-center gap-4 absolute right-4 top-4">
-            <Link
-              href="/contact"
-              className="text-blue-600 hover:text-blue-700 font-medium"
-            >
-              Liên hệ ngay
-            </Link>
-            <Link
-              href="/login"
-              className="text-gray-700 hover:text-primary font-medium"
-            >
-              Đăng nhập
-            </Link>
+            </div>
           </div>
         </nav>
 
         {/* Mobile menu */}
-        <div
-          className={classNames(
-            'md:hidden',
-            isOpen ? 'block' : 'hidden'
-          )}
-        >
+        <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/about"
@@ -325,61 +289,12 @@ export function Navbar() {
             >
               Về chúng tôi
             </Link>
-            
-            {/* Features Section */}
-            <div className="px-3 py-2 text-base font-medium text-gray-900">
+            <Link
+              href="/features"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            >
               Tính năng
-            </div>
-            <div className="pl-6">
-              <div className="px-3 py-2 text-sm font-medium text-gray-700">Hạ tầng</div>
-              <Link
-                href="/compute"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Compute (Tính toán)
-              </Link>
-              <Link
-                href="/networking"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Networking (Mạng)
-              </Link>
-              <Link
-                href="/storage"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Storage (Lưu trữ)
-              </Link>
-
-              <div className="px-3 py-2 text-sm font-medium text-gray-700">Ứng dụng & Dữ liệu</div>
-              <Link
-                href="/kubernetes"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Kubernetes (K8S)
-              </Link>
-              <Link
-                href="/database"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Database Services
-              </Link>
-
-              <div className="px-3 py-2 text-sm font-medium text-gray-700">Vận hành & Bảo mật</div>
-              <Link
-                href="/monitoring"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Monitoring (Giám sát)
-              </Link>
-              <Link
-                href="/security"
-                className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              >
-                Security & Management
-              </Link>
-            </div>
-
+            </Link>
             <Link
               href="/blog"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
@@ -387,20 +302,8 @@ export function Navbar() {
               Blog
             </Link>
             <Link
-              href="/pricing"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >
-              Bảng giá
-            </Link>
-            <Link
-              href="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:text-blue-700"
-            >
-              Liên hệ ngay
-            </Link>
-            <Link
-              href="/login"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              href="/auth/login"
+              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90"
             >
               Đăng nhập
             </Link>
