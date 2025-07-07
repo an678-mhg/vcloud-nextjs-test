@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link 
             href="/contact"
-            className="w-full sm:w-auto text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 px-8 py-4 rounded-full shadow-lg shadow-blue-500/30 transform hover:scale-105"
+            className="w-full sm:w-auto text-base font-semibold text-white bg-green-600 hover:bg-green-700 transition-all duration-300 px-8 py-4 rounded-full shadow-lg shadow-green-500/30 transform hover:scale-105"
           >
             Liên hệ tư vấn
           </Link>
