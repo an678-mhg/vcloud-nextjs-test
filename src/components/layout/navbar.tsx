@@ -96,6 +96,7 @@ export function Navbar() {
               </button>
               <div className="absolute left-0 mt-2 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white rounded-lg shadow-lg p-6">
                 <div className="grid grid-cols-3 gap-6">
+                  {/* Infrastructure */}
                   <div>
                     <h3 className="font-medium text-gray-900 mb-4">Hạ tầng</h3>
                     <ul className="space-y-4">
@@ -105,6 +106,15 @@ export function Navbar() {
                           <div>
                             <h4 className="font-medium text-gray-700">Compute</h4>
                             <p className="text-sm text-gray-600">Cung cấp máy chủ ảo (VMs)</p>
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/networking" className="flex items-start gap-3">
+                          <span className="text-2xl">🌐</span>
+                          <div>
+                            <h4 className="font-medium text-gray-700">Networking</h4>
+                            <p className="text-sm text-gray-600">Quản lý kết nối mạng và bảo mật</p>
                           </div>
                         </Link>
                       </li>
@@ -119,29 +129,64 @@ export function Navbar() {
                       </li>
                     </ul>
                   </div>
+
+                  {/* Applications & Data */}
+                  <div>
+                    <h3 className="font-medium text-gray-900 mb-4">Ứng dụng & Dữ liệu</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <Link href="/kubernetes" className="flex items-start gap-3">
+                          <span className="text-2xl">🚀</span>
+                          <div>
+                            <h4 className="font-medium text-gray-700">Kubernetes</h4>
+                            <p className="text-sm text-gray-600">Nền tảng container tự động hóa</p>
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/database" className="flex items-start gap-3">
+                          <span className="text-2xl">🗄️</span>
+                          <div>
+                            <h4 className="font-medium text-gray-700">Database</h4>
+                            <p className="text-sm text-gray-600">Dịch vụ cơ sở dữ liệu được quản lý</p>
+                          </div>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Operations & Security */}
+                  <div>
+                    <h3 className="font-medium text-gray-900 mb-4">Vận hành & Bảo mật</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <Link href="/monitoring" className="flex items-start gap-3">
+                          <span className="text-2xl">📊</span>
+                          <div>
+                            <h4 className="font-medium text-gray-700">Monitoring</h4>
+                            <p className="text-sm text-gray-600">Giám sát và cảnh báo</p>
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/security" className="flex items-start gap-3">
+                          <span className="text-2xl">🔒</span>
+                          <div>
+                            <h4 className="font-medium text-gray-700">Security</h4>
+                            <p className="text-sm text-gray-600">Bảo mật và quản lý truy cập</p>
+                          </div>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Blog */}
-            <Link
-              href="/blog"
-              className={classNames(
-                'text-gray-700 hover:text-primary transition-colors',
-                isActive('/blog') ? 'text-primary font-medium' : ''
-              )}
-            >
-              Blog
-            </Link>
           </div>
 
           {/* Right side menu */}
           <div className="flex items-center gap-6">
             <div className="hidden md:flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <span>🌐</span>
-                <button className="text-sm text-gray-600">VI | EN</button>
-              </div>
               <span className="text-sm text-gray-600">Sales: +84 (028) 7306 8789</span>
               <div className="relative group">
                 <button className="text-sm text-gray-600 hover:text-primary flex items-center gap-1">
@@ -168,13 +213,13 @@ export function Navbar() {
             </div>
             <Link 
               href="/contact"
-              className="text-sm text-gray-600 hover:text-primary hidden md:block"
+              className="text-sm font-medium text-white bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors hidden md:block"
             >
               Liên hệ ngay
             </Link>
             <Link 
               href="/auth/login"
-              className="text-sm font-medium text-white bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+              className="text-sm text-gray-600 hover:text-primary"
             >
               Đăng nhập
             </Link>
@@ -213,12 +258,6 @@ export function Navbar() {
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               Tính năng
-            </Link>
-            <Link
-              href="/blog"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            >
-              Blog
             </Link>
           </div>
         </div>
