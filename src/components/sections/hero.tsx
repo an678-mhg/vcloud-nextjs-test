@@ -10,7 +10,7 @@ const Hero = () => {
     <section 
       className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden" 
       style={{
-        backgroundImage: "url('https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/1/45/Nen-Vcloud.png')",
+        backgroundImage: "url('https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/1/45/banner (1).png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
