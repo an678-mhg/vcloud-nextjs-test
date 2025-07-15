@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Base styles */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* Apply Inter font to body */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero background styles */
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 128, 128, 0.7);
+  mix-blend-mode: multiply;
+}
+
+/* Ensure content is above overlay */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
 :root {
   --primary: #1EE1E1;
   --secondary: #4EEC8C;
