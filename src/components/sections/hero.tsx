@@ -4,54 +4,74 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '../ui/button'
 
 export function Hero() {
   return (
-    <section 
-      className="relative min-h-screen hero-bg"
-      style={{
-        backgroundImage: "url('https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/1/45/banner (1).png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Teal overlay */}
-      <div 
-        className="absolute inset-0" 
-        style={{
-          backgroundColor: 'rgba(0, 128, 128, 0.7)',
-          mixBlendMode: 'multiply',
-        }}
-      />
+    <section className="relative min-h-screen bg-navy-gradient overflow-hidden">
+      {/* Floating cloud animations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 text-6xl animate-float opacity-20">☁️</div>
+        <div className="absolute top-40 right-20 text-4xl animate-float-delayed opacity-30">☁️</div>
+        <div className="absolute bottom-40 left-1/4 text-5xl animate-float opacity-25">☁️</div>
+        <div className="absolute top-60 left-1/2 text-3xl animate-float-delayed opacity-20">☁️</div>
+        <div className="absolute bottom-60 right-1/3 text-7xl animate-float opacity-15">☁️</div>
+      </div>
 
-      {/* Content wrapper */}
-      <div className="relative z-10 pt-24 md:pt-32 lg:pt-48">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
-            Nền tảng điện toán tại Việt Nam
-          </h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-200">
-            Giải pháp điện toán đám mây toàn diện với độ tin cậy và bảo mật cao, giúp doanh nghiệp của bạn phát triển nhanh chóng và bền vững.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link 
-              href="/contact"
-              className="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300"
-            >
-              Liên hệ tư vấn
-            </Link>
-            <Link
-              href="/pricing"
-              className="w-full sm:w-auto bg-white/90 hover:bg-white text-gray-800 font-semibold px-8 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 flex items-center justify-center"
-            >
-              Xem bảng giá
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
+      {/* Main content */}
+      <div className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* Company name and tagline */}
+          <div className="mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 tracking-tight">
+              VCLOUD
+            </h1>
+            <p className="text-xl md:text-2xl text-vcloud-cyan font-medium mb-2">
+              Cloud, Edge, và AI Solutions
+            </p>
+          </div>
+
+          {/* Main description */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              VCLOUD tăng tốc training AI, cung cấp dịch vụ cloud toàn diện, cải thiện phân phối nội dung và bảo vệ servers & applications
+            </p>
+          </div>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            <Button size="lg" className="w-full sm:w-auto">
+              Bắt đầu ngay
+            </Button>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-vcloud-navy">
+              Tìm hiểu thêm
+            </Button>
+          </div>
+
+          {/* Key statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-vcloud-cyan mb-2">180+</div>
+              <div className="text-sm md:text-base text-gray-300">Điểm hiện diện toàn cầu</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-vcloud-green mb-2">14,000+</div>
+              <div className="text-sm md:text-base text-gray-300">Đối tác peering</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-vcloud-cyan mb-2">200+</div>
+              <div className="text-sm md:text-base text-gray-300">Tbps</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-vcloud-green mb-2">99.997%</div>
+              <div className="text-sm md:text-base text-gray-300">Uptime</div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Gradient overlay at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent" />
     </section>
   )
 } 

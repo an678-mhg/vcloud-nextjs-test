@@ -1,16 +1,15 @@
-import React from 'react';
-import Hero from '@/components/sections/hero';
-import FeaturedClients from '@/components/sections/featured-clients';
-import AIAdvisor from '@/components/sections/ai-advisor';
-import Solutions from '@/components/sections/solutions';
+import { Hero } from '../components/sections/hero'
+import { Services } from '../components/sections/services'
+import { CloudTechnology } from '../components/sections/cloud-technology'
+import { Testimonials } from '../components/sections/testimonials'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <FeaturedClients />
-      <AIAdvisor />
-      <Solutions />
+      <Services />
+      <CloudTechnology />
+      <Testimonials />
     </main>
-  );
+  )
 } 
