@@ -22,13 +22,14 @@ module.exports = {
           950: '#082f49',
         },
         vcloud: {
-          navy: '#0a0a1a',
-          'navy-light': '#1a1a2e',
-          'navy-medium': '#16213e',
+          navy: '#0f172a',        // slate-900
+          'navy-light': '#1e293b', // slate-800
+          'navy-medium': '#334155', // slate-700
+          'navy-soft': '#475569',  // slate-600
           'navy-dark': '#1e3a8a',
           'navy-deeper': '#0f3460',
-          cyan: '#00d4ff',
-          green: '#7ed321',
+          cyan: '#22d3ee',         // cyan-400
+          green: '#4ade80',        // green-400
           'gray-light': '#f8fafc',
           'gray-lighter': '#f9fafb',
           'text-dark': '#1a1a1a',

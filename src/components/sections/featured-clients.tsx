@@ -3,84 +3,48 @@
 import React from 'react';
 import Image from 'next/image';
 
-const clients = [
-  {
-    name: 'Client 1',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client1.png'
-  },
-  {
-    name: 'Client 2',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client2.png'
-  },
-  {
-    name: 'Client 3',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client3.png'
-  },
-  {
-    name: 'Client 4',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client4.png'
-  },
-  {
-    name: 'Client 5',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client5.png'
-  },
-  {
-    name: 'Client 6',
-    logo: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/clients/client6.png'
-  }
+const clientLogos = [
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Jollibee.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_esuhai.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_SeaTek.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Back_Khoa.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Cinestar.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Thanh_Nien.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Sendo.jpg',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Lao_Dong.png',
+  'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Bankograph.png',
 ];
 
 const FeaturedClients = () => {
   return (
     <section className="py-12 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
-          Được tin cậy bởi những công ty hàng đầu
+        <p className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wider mb-8">
+          Khách hàng của VCloud
         </p>
-        <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-6">
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=SAMSUNG" 
-              alt="Samsung"
-            />
-          </div>
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=HYUNDAI" 
-              alt="Hyundai"
-            />
-          </div>
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=PUBG" 
-              alt="PUBG"
-            />
-          </div>
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=LG" 
-              alt="LG"
-            />
-          </div>
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=LOTTE" 
-              alt="Lotte"
-            />
-          </div>
-          <div className="col-span-1 flex justify-center">
-            <img 
-              className="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition" 
-              src="https://placehold.co/158x48/000000/ffffff?text=SK+TELECOM" 
-              alt="SK Telecom"
-            />
+        <div className="overflow-hidden relative">
+          <div className="flex items-center gap-12 animate-marquee whitespace-nowrap">
+            {clientLogos.concat(clientLogos).map((logo, idx) => (
+              <div key={idx} className="inline-flex justify-center items-center">
+                <img
+                  src={logo}
+                  alt={`Logo khách hàng ${idx+1}`}
+                  className="h-16 w-auto max-h-16 max-w-[160px] opacity-80 hover:opacity-100 transition duration-300 mx-6 object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
+        <style jsx>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 30s linear infinite;
+          }
+        `}</style>
       </div>
     </section>
   )

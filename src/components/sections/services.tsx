@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Card, CardContent, CardHeader } from '../ui/card'
 import { Badge } from '../ui/badge'
 
@@ -27,11 +28,11 @@ export function Services() {
   ]
 
   return (
-    <section className="py-20 bg-vcloud-gray-lighter">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-vcloud-text-dark mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Dịch vụ của chúng tôi
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -68,9 +69,9 @@ export function Services() {
                 </div>
                 
                 {/* CTA */}
-                <button className="text-vcloud-cyan hover:text-vcloud-green font-medium transition-colors duration-200">
+                <Link href="/features" className="text-cyan-500 hover:text-cyan-600 font-medium transition-colors duration-200">
                   Tìm hiểu thêm →
-                </button>
+                </Link>
               </CardContent>
             </Card>
           ))}
