@@ -61,20 +61,24 @@ export function VisualSection({ service, isActive }: VisualSectionProps) {
     }
   };
 
+  const items = service.visual && service.visual.items && service.visual.items.length > 0
+    ? service.visual.items
+    : [{ id: 'default', name: 'Dịch vụ VCLOUD', description: '', icon: '' }];
+
   return (
-    <div className="w-full lg:w-1/2 flex items-center justify-center">
+    <div className="w-full lg:w-1/2 flex items-center justify-center bg-navy-gradient rounded-xl">
       <motion.div
         className={`grid ${getGridLayout()} w-full max-w-lg`}
         variants={containerVariants}
         initial="hidden"
         animate={isActive ? "visible" : "hidden"}
       >
-        {service.visual.items.map((item, index) => {
+        {items.map((item, index) => {
           // Card ở giữa (side active) sẽ to hơn
           const isActiveCard =
-            service.visual.type === 'iaas' && index === 1 ? true :
-            service.visual.type === 'paas' && index === 3 ? true :
-            service.visual.type === 'management' && index === 2 ? true :
+            service.visual && service.visual.type === 'iaas' && index === 1 ? true :
+            service.visual && service.visual.type === 'paas' && index === 3 ? true :
+            service.visual && service.visual.type === 'management' && index === 2 ? true :
             false;
           return (
             <motion.div key={item.id} variants={itemVariants}>

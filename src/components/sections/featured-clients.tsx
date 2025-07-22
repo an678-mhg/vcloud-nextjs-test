@@ -17,7 +17,7 @@ const clientLogos = [
 
 const FeaturedClients = () => {
   return (
-    <section className="py-12 bg-slate-50">
+    <section className="py-12 bg-white/20 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wider mb-8">
           Khách hàng của VCloud

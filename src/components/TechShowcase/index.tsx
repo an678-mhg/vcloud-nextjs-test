@@ -27,7 +27,7 @@ export function TechShowcase() {
   return (
     <section 
       ref={ref}
-      className="py-20 bg-gradient-to-br from-gray-50 to-white"
+      className="py-20 bg-white/25 backdrop-blur-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

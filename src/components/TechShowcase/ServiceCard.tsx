@@ -89,8 +89,12 @@ export function ServiceCard({ item, colors, size = 'medium', className = '', isA
       initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.3 }}
     >
-      <div className={`text-${colors.primary} mb-2`}>
-        {IconComponent && <IconComponent size={iconSizes[size]} />}
+      <div className="mb-2 flex items-center justify-center">
+        <img 
+          src="https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/1/45/quanly.png" 
+          alt="Service" 
+          className="w-12 h-12 object-contain"
+        />
       </div>
       <h3 className="font-semibold text-gray-900 text-center leading-tight">
         {item.name}

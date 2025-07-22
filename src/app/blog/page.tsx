@@ -53,13 +53,22 @@ export default function BlogPage() {
   return (
     <div className="bg-gray-50 min-h-screen pt-24">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-sky-100 to-lime-100 py-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-navy-gradient py-16 hero-overlay">
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Floating cloud animations */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-2">
+            <div className="absolute top-20 left-10 text-6xl animate-float opacity-20">☁️</div>
+            <div className="absolute top-40 right-20 text-4xl animate-float-delayed opacity-30">☁️</div>
+            <div className="absolute bottom-40 left-1/4 text-5xl animate-float opacity-25">☁️</div>
+            <div className="absolute top-60 left-1/2 text-3xl animate-float-delayed opacity-20">☁️</div>
+            <div className="absolute bottom-60 right-1/3 text-7xl animate-float opacity-15">☁️</div>
+          </div>
+          
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               VCLOUD Blog
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               Cập nhật tin tức, xu hướng và kiến thức mới nhất về công nghệ đám mây
             </p>
           </div>
@@ -124,7 +133,7 @@ export default function BlogPage() {
                 />
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-sky-500 to-lime-500 text-white px-6 py-2 rounded-lg hover:shadow-lg transition duration-300"
+                  className="bg-gradient-to-r from-cyan-400 to-green-400 text-white px-6 py-2 rounded-lg hover:shadow-lg transition duration-300"
                 >
                   Đăng ký
                 </button>

@@ -39,7 +39,7 @@ export function ContentSection({ service, isActive }: ContentSectionProps) {
   };
 
   return (
-    <div className="w-full lg:w-1/2">
+    <div className="w-full lg:w-1/2 relative z-20">
       <motion.div
         className="space-y-6"
         variants={contentVariants}
