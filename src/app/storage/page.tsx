@@ -1,40 +1,80 @@
-'use client'
+import { Metadata } from 'next';
+import { HeroSection } from '../../components/storage/NewHeroSection';
+import { WhyStorage } from '../../components/storage/WhyStorage';
+import { StorageSolutions } from '../../components/storage/StorageSolutions';
+import { ContactSection } from '../../components/sections/contact';
 
-import Link from 'next/link'
-import { StorageHero } from '@/components/storage/StorageHero'
-import { WhyStorage } from '@/components/storage/WhyStorage'
-import { StorageSolutions } from '@/components/storage/StorageSolutions'
+export const metadata: Metadata = {
+  title: 'VCLOUD Storage - Giải pháp lưu trữ đám mây an toàn',
+  description: 'VCLOUD Storage cung cấp lưu trữ object, backup tự động, CDN tích hợp. Mở rộng không giới hạn với độ bền 99.999%.',
+  keywords: 'cloud storage, object storage, backup, CDN, S3 compatible, VCLOUD',
+  openGraph: {
+    title: 'VCLOUD Storage - Lưu trữ đám mây an toàn',
+    description: 'Lưu trữ object với S3 API, backup tự động và CDN toàn cầu',
+    type: 'website',
+    locale: 'vi_VN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VCLOUD Storage - Lưu trữ đám mây an toàn',
+    description: 'Lưu trữ object với S3 API, backup tự động và CDN toàn cầu',
+  },
+  alternates: {
+    canonical: '/storage',
+  },
+};
 
 export default function StoragePage() {
   return (
-    <main>
-      <StorageHero />
+    <main className="min-h-screen">
+      <HeroSection />
       <WhyStorage />
       <StorageSolutions />
       
       {/* Call to Action Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="text-center bg-white rounded-lg shadow-xl p-12">
-          <h2 className="text-3xl font-bold text-[#0D5E56] mb-4">Sẵn sàng tối ưu hóa việc lưu trữ?</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-            Khám phá bảng giá chi tiết của chúng tôi hoặc liên hệ với đội ngũ chuyên gia để được tư vấn giải pháp phù hợp nhất cho bạn.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
-              href="/pricing"
-              className="btn-gradient text-white font-bold py-3 px-8 rounded-lg text-lg inline-block"
-            >
-              Xem bảng giá
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg text-lg transition hover:bg-gray-300 inline-block"
-            >
-              Liên hệ Tư vấn
-            </Link>
+      <section className="py-20 lg:py-32 bg-navy-gradient text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-white rounded-full"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Bảo vệ và tối ưu dữ liệu doanh nghiệp
+            </h2>
+            <p className="text-xl lg:text-2xl text-gray-200 mb-12">
+              Với giải pháp lưu trữ đám mây an toàn và linh hoạt
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+              <button className="bg-gradient-to-r from-cyan-400 to-green-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-cyan-500 hover:to-green-500 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Bắt đầu lưu trữ ngay
+              </button>
+              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300">
+                Liên hệ tư vấn
+              </button>
+            </div>
+
+            {/* Trust signals */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {["99.999% Durability", "S3 Compatible", "Global CDN", "Auto Backup"].map((signal, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-2xl lg:text-3xl font-bold text-cyan-400 mb-2">
+                    ✓
+                  </div>
+                  <div className="text-sm lg:text-base text-gray-200">
+                    {signal}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+      
+      {/* Contact Section */}
+      <ContactSection />
     </main>
-  )
+  );
 } 

@@ -62,6 +62,42 @@ body {
   }
 }
 
+/* Floating cloud animations */
+@keyframes animate-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-1deg);
+  }
+}
+
+@keyframes animate-float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-1deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float {
+  animation: animate-float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: animate-float-delayed 8s ease-in-out infinite;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -113,4 +149,162 @@ html {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Grid shift animation for VCloudBackground */
+@keyframes gridShift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+} 
+
+/* Contact Page Enhancements */
+.contact-section {
+  min-height: 100vh;
+  position: relative;
+}
+
+.calendly-container {
+  min-height: 700px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.calendly-container iframe {
+  border: none !important;
+  border-radius: 12px;
+  width: 100% !important;
+  height: 700px !important;
+}
+
+.contact-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.error-fallback {
+  padding: 40px;
+  text-align: center;
+  background: #f8fafb;
+  border-radius: 12px;
+  margin: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.fallback-content {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f8fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.fallback-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.fallback-content p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.fallback-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.fallback-info > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fallback-info span:first-child {
+  font-size: 1.5rem;
+}
+
+.fallback-info span:last-child {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Prevent flash of unstyled content */
+.contact-loading {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Form enhancements */
+.contact-section input:focus,
+.contact-section textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.contact-section input::placeholder,
+.contact-section textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Tab transitions */
+.contact-section .tab-content {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1rem;
+  }
+  
+  .fallback-info {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .calendly-container {
+    min-height: 600px;
+  }
+  
+  .calendly-container iframe {
+    height: 600px !important;
+  }
+}
+
+/* Prevent layout shift */
+.contact-section * {
+  box-sizing: border-box;
+}
+
+/* Ensure proper z-index stacking */
+.contact-section .error-fallback {
+  z-index: 10;
+  position: relative;
+}
+
+.contact-section .fallback-content {
+  z-index: 10;
+  position: relative;
 } 

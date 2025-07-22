@@ -84,7 +84,7 @@ export function FinalCtaSection({ data }: FinalCtaSectionProps) {
               transition={{ delay: 0.8 }}
             >
               <CheckCircleIcon className="w-5 h-5" />
-              <span className="text-sm font-medium">{data.guarantee}</span>
+              <span className="text-sm font-medium">99.997% Uptime</span>
             </motion.div>
           </div>
 

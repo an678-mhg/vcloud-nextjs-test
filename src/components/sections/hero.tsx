@@ -5,10 +5,11 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '../ui/button'
+import VCloudBackground from '../ui/VCloudBackground'
 
 export function Hero() {
   return (
-    <section className="relative flex flex-col justify-center bg-navy-gradient overflow-hidden hero-overlay">
+    <VCloudBackground className="min-h-screen flex flex-col justify-center">
       {/* Floating cloud animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-2">
         <div className="absolute top-20 left-10 text-6xl animate-float opacity-20">☁️</div>
@@ -18,11 +19,11 @@ export function Hero() {
         <div className="absolute bottom-60 right-1/3 text-7xl animate-float opacity-15">☁️</div>
       </div>
 
-      {/* Main content */}
-      <div className="relative z-20 pt-12 pb-12 px-4 sm:px-6 lg:px-8">
+      {/* Main content - Thêm padding-top để không bị navbar che */}
+      <div className="relative z-20 pt-24 md:pt-28 lg:pt-32 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           {/* Company name and tagline */}
-          <div className="mb-8 -mt-6">
+          <div className="mb-8">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 tracking-tight">
               VCLOUD
             </h1>
@@ -76,6 +77,6 @@ export function Hero() {
 
       {/* Gradient overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent" />
-    </section>
+    </VCloudBackground>
   )
 } 

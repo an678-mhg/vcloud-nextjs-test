@@ -6,6 +6,7 @@ import { UserExperience } from '../../components/compute/UserExperience';
 import { FeaturesSection } from '../../components/compute/FeaturesSection';
 import { UseCasesSection } from '../../components/compute/UseCasesSection';
 import { FinalCTA } from '../../components/compute/FinalCTA';
+import { ContactSection } from '../../components/sections/contact';
 
 export const metadata: Metadata = {
   title: 'VCLOUD Compute - Cloud Computing mạnh mẽ cho doanh nghiệp',
@@ -37,6 +38,7 @@ export default function ComputePage() {
       <FeaturesSection />
       <UseCasesSection />
       <FinalCTA />
+      <ContactSection />
     </main>
   );
 } 

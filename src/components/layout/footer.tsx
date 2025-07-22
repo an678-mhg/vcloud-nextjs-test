@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-16">
+    <footer className="bg-gradient-to-br from-[#2E1065] via-[#1A0B3D] to-[#0F0B3D] text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -17,7 +17,7 @@ export function Footer() {
               />
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
-              VCLOUD tăng tốc training AI, cung cấp dịch vụ cloud toàn diện, cải thiện phân phối nội dung và bảo vệ servers & applications.
+            Giải pháp điện toán đám mây toàn diện với độ tin cậy và bảo mật cao, giúp doanh nghiệp của bạn phát triển nhanh chóng và bền vững.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-vcloud-cyan transition-colors">
@@ -35,14 +35,17 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Features */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Dịch vụ</h3>
+            <h3 className="text-lg font-semibold mb-4">Tính năng</h3>
             <ul className="space-y-2">
-              <li><Link href="/edge-cloud" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Edge Cloud</Link></li>
-              <li><Link href="/ai-training" className="text-gray-300 hover:text-vcloud-cyan transition-colors">AI Training & Inference</Link></li>
-              <li><Link href="/cdn" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Content Delivery</Link></li>
-              <li><Link href="/support" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Hỗ trợ kỹ thuật</Link></li>
+              <li><Link href="/compute" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Cloud Compute</Link></li>
+              <li><Link href="/storage" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Cloud Storage</Link></li>
+              <li><Link href="/networking" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Networking</Link></li>
+              <li><Link href="/kubernetes" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Kubernetes</Link></li>
+              <li><Link href="/database" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Database</Link></li>
+              <li><Link href="/monitoring" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Monitoring</Link></li>
+              <li><Link href="/security" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Security</Link></li>
             </ul>
           </div>
 
@@ -50,8 +53,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Công ty</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Về chúng tôi</Link></li>
-              <li><Link href="/careers" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Tuyển dụng</Link></li>
+              <li><Link href="/about-us" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Về chúng tôi</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Liên hệ</Link></li>
               <li><Link href="/privacy" className="text-gray-300 hover:text-vcloud-cyan transition-colors">Chính sách bảo mật</Link></li>
             </ul>

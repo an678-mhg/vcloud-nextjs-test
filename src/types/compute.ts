@@ -26,6 +26,21 @@ export interface UXHighlight {
   description: string;
 }
 
+export interface FinalCta {
+  title: string;
+  subtitle: string;
+  primaryButton: string;
+  secondaryButton: string;
+  trustSignals: string[];
+}
+
+export interface TechSpec {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface ComputePageData {
   hero: {
     badge: string;
@@ -44,11 +59,5 @@ export interface ComputePageData {
   userExperience: UXHighlight[];
   features: Feature[];
   useCases: UseCase[];
-  finalCTA: {
-    title: string;
-    subtitle: string;
-    primaryButton: string;
-    secondaryButton: string;
-    trustSignals: string[];
-  };
+  finalCTA: FinalCta;
 } 
