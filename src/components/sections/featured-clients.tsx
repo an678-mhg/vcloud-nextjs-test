@@ -15,6 +15,25 @@ const clientLogos = [
   'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/23/Cloud_Bankograph.png',
 ];
 
+const awards = [
+  {
+    image: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/26/Frame 1510 (1).png',
+    alt: 'VCLOUD Award 1'
+  },
+  {
+    image: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/26/67jdbdsbfsdf.png',
+    alt: 'VCLOUD Award 2'
+  },
+  {
+    image: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/26/anhChungDev.png',
+    alt: 'VCLOUD Award 3'
+  },
+  {
+    image: 'https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/26/heloooshbsbjsf.png',
+    alt: 'VCLOUD Award 4'
+  }
+];
+
 const FeaturedClients = () => {
   return (
     <section className="py-12 bg-gray-50">
@@ -22,7 +41,9 @@ const FeaturedClients = () => {
         <p className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wider mb-8">
           Khách hàng của VCloud
         </p>
-        <div className="overflow-hidden relative">
+        
+        {/* Client Logos Marquee */}
+        <div className="overflow-hidden relative mb-16">
           <div className="flex items-center gap-12 animate-marquee whitespace-nowrap">
             {clientLogos.concat(clientLogos).map((logo, idx) => (
               <div key={idx} className="inline-flex justify-center items-center">
@@ -36,6 +57,23 @@ const FeaturedClients = () => {
             ))}
           </div>
         </div>
+
+        {/* Awards Section */}
+        <div className="mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {awards.map((award, index) => (
+              <div key={index} className="flex justify-center items-center">
+                <img
+                  src={award.image}
+                  alt={award.alt}
+                  className="h-24 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         <style jsx>{`
           @keyframes marquee {
             0% { transform: translateX(0); }

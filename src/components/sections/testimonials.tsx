@@ -97,7 +97,7 @@ export function Testimonials() {
                 }}
               >
                 <div
-                  className="w-full h-full rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
+                  className="w-full h-full rounded-3xl p-8 lg:p-12 shadow-lg relative overflow-hidden"
                   style={{ background: testimonial.gradient }}
                 >
                   {/* Quote Mark */}

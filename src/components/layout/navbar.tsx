@@ -110,11 +110,12 @@ export function Navbar() {
     <>
       <header 
         ref={navbarRef}
-        className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out backdrop-blur-sm ${
           isScrolled || hasWhiteBackground
-            ? 'bg-gradient-to-r from-[#2E1065] via-[#1A0B3D] to-[#0F0B3D] shadow-lg backdrop-blur-sm' 
+            ? 'bg-gradient-to-r from-[#2E1065]/95 via-[#1A0B3D]/95 to-[#0F0B3D]/95 shadow-lg' 
             : 'bg-transparent'
         }`}
+        style={{ position: 'fixed', top: 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 py-3">
           <nav className="flex items-center justify-between">
@@ -198,8 +199,8 @@ export function Navbar() {
                   size="sm" 
                   className={`hidden md:block border-2 transition-all duration-300 ${
                     isScrolled || hasWhiteBackground
-                      ? 'border-white text-white hover:bg-white hover:text-slate-900'
-                      : 'border-white text-white hover:bg-white hover:text-slate-900'
+                      ? 'border-white text-white hover:bg-transparent'
+                      : 'border-white text-white hover:bg-transparent'
                   }`}
                 >
                   Liên hệ ngay

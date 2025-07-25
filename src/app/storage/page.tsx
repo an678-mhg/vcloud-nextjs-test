@@ -45,7 +45,7 @@ export default function StoragePage() {
             </h2>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12">
               Với giải pháp lưu trữ đám mây an toàn và linh hoạt
-            </p>
+          </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <button className="bg-gradient-to-r from-cyan-400 to-green-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-cyan-500 hover:to-green-500 transition-all duration-300 shadow-lg hover:shadow-xl">

@@ -5,13 +5,14 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
-  CloudIcon, 
-  ServerIcon, 
-  CogIcon, 
+  ArrowUpIcon,
+  ServerIcon,
+  CogIcon,
+  ChevronLeftIcon,
   ChevronRightIcon,
   PlayIcon,
-  PauseIcon 
-} from '@heroicons/react/outline'
+  PauseIcon
+} from '@heroicons/react/solid'
 
 // Types
 interface Service {
@@ -40,7 +41,7 @@ const services: Service[] = [
     title: 'Hạ Tầng & Hiệu Suất Vượt Trội',
     subtitle: 'Triển khai nhanh',
     description: 'Trung tâm dữ liệu cấp 3 chuẩn quốc tế với hiệu suất vượt trội, đảm bảo ứng dụng của bạn luôn chạy mượt mà và ổn định',
-    icon: CloudIcon,
+    icon: ArrowUpIcon,
     features: [
       'Trung tâm dữ liệu cấp 3 chuẩn quốc tế',
       'Siêu tốc độ xử lý: 98.000 thao tác/giây',
@@ -55,11 +56,11 @@ const services: Service[] = [
     },
     cta: {
       primary: 'Khởi tạo ngay',
-      secondary: 'Xem demo'
+      secondary: 'Xem Bảng Giá'
     }
   },
   {
-    id: 'ai-training',
+    id: 'Mở Rộng & Tích Hợp Linh Hoạt',
     title: 'Mở Rộng & Tích Hợp Linh Hoạt',
     subtitle: 'Mở rộng theo quy mô doanh nghiệp',
     description: 'Tự động mở rộng tức thời và tích hợp liền mạch với hệ thống hiện tại, hỗ trợ mọi nhu cầu phát triển doanh nghiệp.',
@@ -70,15 +71,15 @@ const services: Service[] = [
       'Tích hợp giao diện với hệ thống hiện tại',
       'Hỗ trợ container và điều phối ứng dụng',
     ],
-    tags: ['AI/ML', 'GPU', 'Optimization'],
+    tags: ['Scalability', 'Integration', 'Container'],
     color: {
       primary: '#10b981',
       secondary: '#059669',
       accent: '#34d399'
     },
     cta: {
-      primary: 'Bắt đầu Training',
-      secondary: 'Tính toán chi phí'
+      primary: 'Tư vấn giải pháp',
+      secondary: 'Xem bảng giá'
     }
   },
   {
@@ -93,7 +94,7 @@ const services: Service[] = [
       'Giám sát và cảnh báo tự động',
       'Triển khai và quản lý nhanh chóng',
     ],
-    tags: ['CDN', 'Security', 'Analytics'],
+    tags: ['Management', 'Support', 'Monitoring'],
     color: {
       primary: '#8b5cf6',
       secondary: '#7c3aed',
@@ -109,84 +110,43 @@ const services: Service[] = [
 // Custom hooks
 const useAutoRotate = (length: number, interval: number = 5000) => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
   const [isPaused, setIsPaused] = useState(false)
-  const [progress, setProgress] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout>()
-  const progressRef = useRef<NodeJS.Timeout>()
-
-  const startProgress = useCallback(() => {
-    setProgress(0)
-    const startTime = Date.now()
-    
-    const updateProgress = () => {
-      const elapsed = Date.now() - startTime
-      const newProgress = Math.min((elapsed / interval) * 100, 100)
-      setProgress(newProgress)
-      
-      if (newProgress < 100) {
-        progressRef.current = setTimeout(updateProgress, 16) // ~60fps
-      }
-    }
-    
-    updateProgress()
-  }, [interval])
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % length)
-    startProgress()
-  }, [length, startProgress])
+  }, [length])
 
   const goTo = useCallback((index: number) => {
     setCurrentIndex(index)
-    startProgress()
-  }, [startProgress])
+  }, [])
 
   const pause = useCallback(() => {
     setIsPaused(true)
     if (intervalRef.current) clearInterval(intervalRef.current)
-    if (progressRef.current) clearTimeout(progressRef.current)
   }, [])
 
   const resume = useCallback(() => {
     setIsPaused(false)
-    startProgress()
-  }, [startProgress])
-
-  const togglePlay = useCallback(() => {
-    setIsPlaying(!isPlaying)
-    if (isPlaying) {
-      pause()
-    } else {
-      resume()
-    }
-  }, [isPlaying, pause, resume])
+  }, [])
 
   useEffect(() => {
-    if (isPlaying && !isPaused) {
+    if (!isPaused) {
       intervalRef.current = setInterval(next, interval)
-      startProgress()
-    } else {
-      if (intervalRef.current) clearInterval(intervalRef.current)
-      if (progressRef.current) clearTimeout(progressRef.current)
     }
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
-      if (progressRef.current) clearTimeout(progressRef.current)
     }
-  }, [isPlaying, isPaused, next, interval, startProgress])
+  }, [isPaused, next, interval])
 
   return {
     currentIndex,
-    isPlaying,
     isPaused,
-    progress,
     next,
     goTo,
     pause,
-    resume,
-    togglePlay
+    resume
   }
 }
 
@@ -235,14 +195,11 @@ export function Services() {
 
   const {
     currentIndex,
-    isPlaying,
     isPaused,
-    progress,
     next,
     goTo,
     pause,
-    resume,
-    togglePlay
+    resume
   } = useAutoRotate(services.length)
 
   const swipeHandlers = useSwipeGesture(
@@ -295,6 +252,8 @@ export function Services() {
     <section 
       ref={ref}
       className="py-20 bg-gray-50 relative overflow-hidden"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
     >
       {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-to-br from-lime-500/5 to-transparent" />
@@ -369,44 +328,26 @@ export function Services() {
                           font-semibold transition-colors duration-300
                           ${currentIndex === index ? 'text-lime-700' : 'text-slate-700'}
                         `}>
-                  {service.title}
+                          {service.title}
                         </h4>
                         <p className="text-sm text-slate-500 mt-1">
                           {service.subtitle}
                         </p>
                       </div>
-                      {/* Progress indicator */}
+                      {/* Active indicator */}
                       {currentIndex === index && (
                         <div className="w-1 h-12 bg-lime-200 rounded-full overflow-hidden">
                           <motion.div
                             className="w-full bg-lime-500 rounded-full"
-                            style={{ height: `${progress}%` }}
-                            initial={{ height: 0 }}
-                            animate={{ height: `${progress}%` }}
-                            transition={{ duration: 0.1 }}
+                            initial={{ height: "0%" }}
+                            animate={{ height: "100%" }}
+                            transition={{ duration: 5, repeat: Infinity }}
                           />
                         </div>
                       )}
                     </div>
                   </motion.button>
                 ))}
-              </div>
-
-              {/* Play/Pause control */}
-              <div className="mt-8 flex items-center justify-center">
-                <button
-                  onClick={togglePlay}
-                  className="flex items-center space-x-2 px-4 py-2 bg-lime-100 hover:bg-lime-200 text-lime-700 rounded-lg transition-colors duration-300"
-                >
-                  {isPlaying ? (
-                    <PauseIcon className="w-4 h-4" />
-                  ) : (
-                    <PlayIcon className="w-4 h-4" />
-                  )}
-                  <span className="text-sm font-medium">
-                    {isPlaying ? 'Tạm dừng' : 'Phát tự động'}
-                  </span>
-                </button>
               </div>
             </div>
           </motion.div>

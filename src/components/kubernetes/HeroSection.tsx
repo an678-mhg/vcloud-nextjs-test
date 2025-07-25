@@ -51,7 +51,7 @@ export function HeroSection() {
                 {kubernetesPageData.hero.primaryCTA}
               </motion.button>
               <motion.button 
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition-all duration-300"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-transparent transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

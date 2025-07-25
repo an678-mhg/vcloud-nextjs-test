@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckIcon } from '@heroicons/react/outline'
+import { ChevronLeftIcon, ChevronRightIcon, CheckCircleIcon } from '@heroicons/react/solid'
 
 const CloudUSPSection = () => {
-  const [activeTab, setActiveTab] = useState(0)
-
   const tabsData = [
     {
       id: 0,
@@ -74,165 +72,175 @@ const CloudUSPSection = () => {
     }
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  }
+  const [[page, direction], setPage] = useState([0, 0]);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const imageVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  }
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
 
-  const textVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        delay: 0.2
-      }
-    }
-  }
+    const timer = setInterval(() => {
+      setPage(([currentPage]) => [
+        (currentPage + 1) % tabsData.length,
+        1
+      ]);
+    }, 5000); // 5 seconds interval
+
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, tabsData.length, page]);
+
+  const paginate = (newDirection: number) => {
+    setIsAutoPlaying(false);
+    setPage(([currentPage]) => [
+      (currentPage + newDirection + tabsData.length) % tabsData.length,
+      newDirection
+    ]);
+    // Resume auto-play after 5 seconds
+    const timer = setTimeout(() => setIsAutoPlaying(true), 5000);
+    return () => clearTimeout(timer);
+  };
+
+  const handleTabClick = (index: number) => {
+    const newDirection = index > page ? 1 : -1;
+    setIsAutoPlaying(false);
+    setPage([index, newDirection]);
+    // Resume auto-play after 5 seconds
+    const timer = setTimeout(() => setIsAutoPlaying(true), 5000);
+    return () => clearTimeout(timer);
+  };
 
   return (
-    <section className="py-20 lg:py-32 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main Container */}
-        <div className="bg-white rounded-2xl shadow-2xl mx-auto max-w-6xl overflow-hidden">
-          {/* Tab Content Area */}
-          <div className="p-8 lg:p-16">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 min-h-[500px]"
+    <section className="py-16 lg:py-24 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="bg-white rounded-2xl shadow-2xl mx-auto max-w-5xl overflow-hidden">
+          <div className="p-6 lg:p-12">
+            <div className="relative">
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => paginate(-1)}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 p-4 text-[#64748b] hover:text-[#334155] transition-colors z-20"
+                aria-label="Previous slide"
               >
-                {/* Images Section */}
-                <motion.div 
-                  variants={imageVariants}
-                  className="flex-1 relative"
-                >
-                  <div className="relative">
-                    {/* Background Image */}
-                    <div className="relative">
-                      <img
-                        key={`main-${activeTab}`}
-                        src={tabsData[activeTab].images.main}
-                        alt="Cloud Infrastructure"
-                        className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#4c1d95]/20 to-[#1e40af]/20 rounded-2xl"></div>
-                    </div>
-                    
-                    {/* Overlapping Image */}
-                    <div className="absolute -bottom-8 -right-8 lg:-bottom-12 lg:-right-12">
-                      <img
-                        key={`overlay-${activeTab}`}
-                        src={tabsData[activeTab].images.overlay}
-                        alt="Management Dashboard"
-                        className="w-48 h-48 lg:w-64 lg:h-64 object-cover rounded-2xl shadow-2xl border-4 border-white"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
 
-                {/* Content Section */}
-                <motion.div 
-                  variants={textVariants}
-                  className="flex-1 space-y-6"
-                >
-                  <h3 className="text-3xl lg:text-4xl font-bold text-[#1e293b] leading-tight">
-                    {tabsData[activeTab].title}
-                  </h3>
-                  
-                  <p className="text-lg text-[#64748b] leading-relaxed">
-                    {tabsData[activeTab].description}
-                  </p>
+              <button
+                onClick={() => paginate(1)}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 p-4 text-[#64748b] hover:text-[#334155] transition-colors z-20"
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
 
-                  {/* Features List */}
-                  <div className="space-y-4 pt-4">
-                    {tabsData[activeTab].features.map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 + index * 0.1 }}
-                        className="flex items-start gap-3"
-                      >
-                        <div className="flex-shrink-0 w-6 h-6 bg-[#10b981] rounded-full flex items-center justify-center mt-0.5">
-                          <CheckIcon className="w-4 h-4 text-white" />
+              {/* Content Container */}
+              <div className="overflow-hidden">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.div
+                    key={page}
+                    custom={direction}
+                    initial={{ opacity: 0, x: direction > 0 ? 1000 : -1000 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: direction < 0 ? 1000 : -1000 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30
+                    }}
+                    className="w-full"
+                  >
+                    <div className="flex flex-col items-center gap-8 lg:gap-12">
+                      {/* Images Section */}
+                      <div className="w-full max-w-2xl mx-auto relative">
+                        <div className="relative">
+                          {/* Background Image */}
+                          <div className="relative">
+                            <img
+                              src={tabsData[page].images.main}
+                              alt="Cloud Infrastructure"
+                              className="w-full h-80 object-cover rounded-2xl shadow-2xl"
+                            />
+                            {/* Full-width decoration lines */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#4c1d95]/20 via-transparent to-[#1e40af]/20 rounded-2xl"></div>
+                            <div className="absolute h-px w-full top-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                            <div className="absolute h-px w-full bottom-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                          </div>
+                          
+                          {/* Overlapping Image - Centered */}
+                          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                            <img
+                              src={tabsData[page].images.overlay}
+                              alt="Feature Illustration"
+                              className="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-white"
+                            />
+                          </div>
                         </div>
-                        <span className="text-[#334155] font-medium leading-relaxed">
-                          {feature}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="w-full max-w-2xl mx-auto space-y-4">
+                        <h3 className="text-3xl lg:text-4xl font-bold text-[#1e293b] leading-tight text-center">
+                          {tabsData[page].title}
+                        </h3>
+                        
+                        <p className="text-lg text-[#64748b] leading-relaxed text-center">
+                          {tabsData[page].description}
+                        </p>
+
+                        {/* Features List */}
+                        <div className="space-y-4 pt-4 max-w-2xl mx-auto">
+                          {tabsData[page].features.map((feature, index) => (
+                            <motion.div
+                              key={`${page}-${index}`}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.2 + index * 0.1 }}
+                              className="flex items-start gap-3"
+                            >
+                              <div className="flex-shrink-0 w-6 h-6 bg-[#10b981] rounded-full flex items-center justify-center mt-0.5">
+                                <CheckCircleIcon className="w-4 h-4 text-white" />
+                              </div>
+                              <span className="text-[#334155] font-medium leading-relaxed">
+                                {feature}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
 
           {/* Tab Menu */}
           <div className="bg-[#f1f5f9] border-t border-[#e2e8f0]">
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-1 flex-col md:flex-row">
               {tabsData.map((tab, index) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => handleTabClick(index)}
                   className={`
-                    flex-1 px-6 py-4 text-left transition-all duration-300 relative
-                    ${activeTab === index 
-                      ? 'bg-white text-[#3b82f6] font-semibold border-t-4 border-[#3b82f6]' 
+                    flex-1 flex items-center justify-center text-center px-6 py-3 transition-all duration-300 relative
+                    ${page === index 
+                      ? 'bg-white text-[#3b82f6] font-semibold' 
                       : 'text-[#64748b] hover:text-[#334155] hover:bg-white/50'
                     }
                   `}
                 >
-                  <div className="text-sm lg:text-base font-medium">
+                  <div className="text-sm lg:text-base font-medium w-full">
                     {tab.title}
                   </div>
-                  
-                  {/* Active indicator */}
-                  {activeTab === index && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#3b82f6] to-[#6d28d9]"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
                 </button>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .min-h-[500px] {
-            min-height: auto;
-          }
-        }
-      `}</style>
     </section>
   )
 }

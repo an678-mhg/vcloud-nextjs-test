@@ -47,7 +47,7 @@ export function Hero() {
               </Button>
             </Link>
             <Link href="/pricing">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-slate-900">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto border-2 border-white text-white hover:bg-transparent">
                 Xem bảng giá
               </Button>
             </Link>
@@ -56,20 +56,20 @@ export function Hero() {
           {/* Key statistics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-4">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">180+</div>
-              <div className="text-sm md:text-base text-gray-300">điểm hiện diện toàn cầu</div>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">99,997+</div>
+              <div className="text-xs md:text-sm text-gray-300">Hiệu suất uptime to vượt trội</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">14,000+</div>
-              <div className="text-sm md:text-base text-gray-300">đối tác peering</div>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">8+ISP</div>
+              <div className="text-xs md:text-sm text-gray-300">Đạt chuẩn Tier 3+ quốc tế</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">200+</div>
-              <div className="text-sm md:text-base text-gray-300">Tbps - tổng dung lượng mạng</div>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">24/7</div>
+              <div className="text-xs md:text-sm text-gray-300">Chuyên gia sẵn sàng hỗ trợ</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">0ms</div>
-              <div className="text-sm md:text-base text-gray-300">thời gian phản hồi trung bình</div>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2 whitespace-nowrap">800,000 IOPS</div>
+              <div className="text-xs md:text-sm text-gray-300">Tốc độ đọc/ghi mạnh mẽ lên tới</div>
             </div>
           </div>
         </div>

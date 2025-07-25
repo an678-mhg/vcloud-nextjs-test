@@ -1,30 +1,99 @@
 export interface ComputePlan {
+  id: string;
   name: string;
+  type: 'standard' | 'memory' | 'cpu';
   vcpu: number;
   ram: number;
-  type: 'standard' | 'memory' | 'cpu';
 }
 
 export const computePlans: ComputePlan[] = [
-  { name: 'vnw1-standard-1-2', vcpu: 1, ram: 2, type: 'standard' },
-  { name: 'vnw2-standard-2-4', vcpu: 2, ram: 4, type: 'standard' },
-  { name: 'vnw3-standard-2-8', vcpu: 2, ram: 8, type: 'standard' },
-  { name: 'vnw4-standard-4-8', vcpu: 4, ram: 8, type: 'standard' },
-  { name: 'vnw5-standard-4-16', vcpu: 4, ram: 16, type: 'standard' },
-  { name: 'vnw6-standard-8-16', vcpu: 8, ram: 16, type: 'standard' },
-  { name: 'vnw7-standard-8-32', vcpu: 8, ram: 32, type: 'standard' },
-  { name: 'vnw8-standard-16-32', vcpu: 16, ram: 32, type: 'standard' },
-  { name: 'vnw9-standard-16-64', vcpu: 16, ram: 64, type: 'standard' },
-  { name: 'vnw10-standard-32-64', vcpu: 32, ram: 64, type: 'standard' },
-  { name: 'vnw11-standard-32-128', vcpu: 32, ram: 128, type: 'standard' },
-  { name: 'vnw12-memory-2-16', vcpu: 2, ram: 16, type: 'memory' },
-  { name: 'vnw13-memory-4-32', vcpu: 4, ram: 32, type: 'memory' },
-  { name: 'vnw14-memory-8-64', vcpu: 8, ram: 64, type: 'memory' },
-  { name: 'vnw15-memory-16-128', vcpu: 16, ram: 128, type: 'memory' },
-  { name: 'vnw16-memory-32-256', vcpu: 32, ram: 256, type: 'memory' },
-  { name: 'vnw17-cpu-2-2', vcpu: 2, ram: 2, type: 'cpu' },
-  { name: 'vnw18-cpu-4-4', vcpu: 4, ram: 4, type: 'cpu' },
-  { name: 'vnw19-cpu-8-8', vcpu: 8, ram: 8, type: 'cpu' },
-  { name: 'vnw20-cpu-16-16', vcpu: 16, ram: 16, type: 'cpu' },
-  { name: 'vnw21-cpu-32-32', vcpu: 32, ram: 32, type: 'cpu' },
+  // Standard Plans
+  {
+    id: 'vnw1-standard-1-2',
+    name: 'VNW1-STANDARD-1-2',
+    type: 'standard',
+    vcpu: 1,
+    ram: 2
+  },
+  {
+    id: 'vnw1-standard-2-4',
+    name: 'VNW1-STANDARD-2-4',
+    type: 'standard',
+    vcpu: 2,
+    ram: 4
+  },
+  {
+    id: 'vnw1-standard-4-8',
+    name: 'VNW1-STANDARD-4-8',
+    type: 'standard',
+    vcpu: 4,
+    ram: 8
+  },
+  {
+    id: 'vnw1-standard-8-16',
+    name: 'VNW1-STANDARD-8-16',
+    type: 'standard',
+    vcpu: 8,
+    ram: 16
+  },
+
+  // Memory Optimized Plans
+  {
+    id: 'vnw1-memory-2-8',
+    name: 'VNW1-MEMORY-2-8',
+    type: 'memory',
+    vcpu: 2,
+    ram: 8
+  },
+  {
+    id: 'vnw1-memory-4-16',
+    name: 'VNW1-MEMORY-4-16',
+    type: 'memory',
+    vcpu: 4,
+    ram: 16
+  },
+  {
+    id: 'vnw1-memory-8-32',
+    name: 'VNW1-MEMORY-8-32',
+    type: 'memory',
+    vcpu: 8,
+    ram: 32
+  },
+  {
+    id: 'vnw1-memory-16-64',
+    name: 'VNW1-MEMORY-16-64',
+    type: 'memory',
+    vcpu: 16,
+    ram: 64
+  },
+
+  // CPU Optimized Plans
+  {
+    id: 'vnw1-cpu-2-2',
+    name: 'VNW1-CPU-2-2',
+    type: 'cpu',
+    vcpu: 2,
+    ram: 2
+  },
+  {
+    id: 'vnw1-cpu-4-4',
+    name: 'VNW1-CPU-4-4',
+    type: 'cpu',
+    vcpu: 4,
+    ram: 4
+  },
+  {
+    id: 'vnw1-cpu-8-8',
+    name: 'VNW1-CPU-8-8',
+    type: 'cpu',
+    vcpu: 8,
+    ram: 8
+  },
+  {
+    id: 'vnw1-cpu-16-16',
+    name: 'VNW1-CPU-16-16',
+    type: 'cpu',
+    vcpu: 16,
+    ram: 16
+  }
 ]; 

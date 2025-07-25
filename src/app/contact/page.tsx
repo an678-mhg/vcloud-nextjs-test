@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
 
 type ContactFormData = {
   fullName: string;
@@ -18,7 +19,18 @@ declare global {
 }
 
 export default function ContactPage() {
-  const [activeTab, setActiveTab] = useState<'message' | 'call'>('call');
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState<'message' | 'call'>('message');
+  
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'call' || tab === 'message') {
+      setActiveTab(tab);
+    } else {
+      setActiveTab('message');
+    }
+  }, [searchParams]);
+
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
   const [showFallback, setShowFallback] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
