@@ -298,13 +298,6 @@ export function Navbar() {
                       <div className="font-medium text-gray-900">Giới thiệu chung</div>
                       <div className="dropdown-description text-sm text-gray-500 mt-1">Tìm hiểu về VCLOUD và sứ mệnh của chúng tôi</div>
                     </Link>
-                    <Link
-                      href="/about/development"
-                      className="dropdown-item block p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="font-medium text-gray-900">Định hướng phát triển</div>
-                      <div className="dropdown-description text-sm text-gray-500 mt-1">Tầm nhìn và chiến lược phát triển tương lai</div>
-                    </Link>
                   </div>
                 </div>
               </div>
